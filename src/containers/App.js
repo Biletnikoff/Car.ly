@@ -23,9 +23,14 @@ import activeSearch from '../assets/images/TabBar-House-Icon-Active@3x.png'
 
 const scenes = Actions.create(
   <Scene key="root" >
+<<<<<<< 9c7038589122fafe294426047d17336790827261
     <Scene type="push" key="Login" initial={true} direction='horizontal' component={Login} duration={100} title='Login' />
     <Scene type="push" key="Search" component={Search} />
     <Scene type="push" key="SignUp" component={Signup} direction='horizontal' duration={100} title='Signup' />
+=======
+    <Scene type="push" key="Search" initial={true} direction='horizontal' component={Search} duration={100} title='Search' />
+    <Scene type="push" key="SignUp"component={Signup} direction='horizontal' duration={100} title='Signup' />
+>>>>>>> merge fix
     <Scene type="push" key="Results" component={Results} direction='horizontal' duration={100} title='Results'backTitle="Search" panHandlers={null}/>
     <Scene type="push" key="Favorites" component={Favorites} direction='horizontal' duration={100} title='Favorites'backTitle="Results" panHandlers={null}/>
     <Scene type="push" key="Login"  direction='horizontal' component={Login} title='Login'backTitle="Signup" />
