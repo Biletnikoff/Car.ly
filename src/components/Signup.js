@@ -122,7 +122,7 @@ export default class Signup extends Component {
   render() {
     return (
       <View style={styles.mainContainer}>
-        <Image 
+        <Image
           style={styles.image}
           source={require('../assets/images/carlylogo.png')}
         />

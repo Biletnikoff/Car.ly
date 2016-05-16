@@ -96,7 +96,7 @@ const styles = StyleSheet.create({
 //   }
 
 //   render() {
-//     return (  
+//     return (
 //       <Text style={styles.alert}>Invalid email or password!</Text>
 //     )
 //   }
@@ -122,7 +122,7 @@ export default class Login extends Component {
   handleSignup() {
     Actions.SignUp();
   }
- 
+
   handleSubmit() {
     this.props.dispatch(validateLogin({email: this.props.login.email, password: this.props.login.password}));
     this.retrieveFavorites();
@@ -141,7 +141,7 @@ export default class Login extends Component {
       }
     }).then(res => res.json())
     .then(data => {
-      console.log("favorites", data.favorites); 
+      console.log("favorites", data.favorites);
       dispatch(favoritesActions({favoritesList: data.favorites}));
     })
   }
@@ -149,7 +149,7 @@ export default class Login extends Component {
   render() {
     return (
       <View style={styles.mainContainer}>
-        <Image 
+        <Image
           style={styles.image}
           source={require('../assets/images/carlylogo.png')}
         />
@@ -169,7 +169,7 @@ export default class Login extends Component {
         <Text style={styles.buttonText}>Sign In</Text></TouchableHighlight>
         <Text style={styles.orText}>Or</Text>
         <Text style={styles.orText}>
-        Don't have an account yet?</Text> 
+        Don't have an account yet?</Text>
         <TouchableHighlight onPress={this.handleSignup.bind(this)}>
         <Text style={styles.orText}>Signup</Text></TouchableHighlight>
       </View>
