@@ -56,10 +56,6 @@ const initialState = {
 
 
 export default handleActions({
-  // GET_CARDATA: (state, { payload }) => ({
-  //   ...state,
-  //   ...payload.payload
-  // }),
   GET_CARDATA: (state, action ) => ({ ...state, searchResults:[...action.payload.extractorData.data[0].group]}),
   SET_QUERY: (state, action) => ({
     ...state,
