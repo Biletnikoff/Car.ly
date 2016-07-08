@@ -12,7 +12,6 @@
     "cover": "babel-node node_modules/.bin/isparta cover _mocha -- --recursive -r test/setup",
     "remotedev": "remotedev-debugger --hostname localhost --port 5678 --injectserver",
     "checkversion": "node node_modules/fbjs-scripts/node/check-dev-engines.js package.json",
-    "postinstall": "npm run checkversion && npm run remotedev"
   },
   "dependencies": {
     "animated": "^0.1.2",
@@ -73,7 +72,7 @@
     "rnpm": "^1.4.1",
     "sinon": "^1.17.2"
   },
-  "engines": {
+  "devEngines": {
     "node": ">= 5.x",
     "npm": ">= 3.x"
   }
