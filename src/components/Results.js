@@ -25,15 +25,13 @@ import ListViewer from './common/ListViewer.js';
 import HeaderContainer from './common/HeaderContainer.js';
 import Icon from 'react-native-vector-icons/Ionicons';
 import fakeData from '../assets/fakeData.js';
+import ActionButton from 'react-native-action-button';
+
 
 import { ACTIVITY_INDICATOR, loading, CAR_DATA_REQUEST, requestedData} from '../actions/activityMonitoring.js';
 
 var Header = require('./common/Header');
 var ParallaxBackground = require('./common/ParallaxBackground');
-import ActionButton from 'react-native-action-button';
-
-
-
 
 
 @connect(state => ({
@@ -46,15 +44,15 @@ import ActionButton from 'react-native-action-button';
 }))
 
 export default class Results extends Component{
-  // static propTypes = {
-  //   dispatch: React.PropTypes.func.isRequired,
-  //   query: React.PropTypes.object.isRequired,
-  //   cards: React.PropTypes.array.isRequired,
-  //   login: React.PropTypes.object.isRequired,
-  //   signup: React.PropTypes.object.isRequired,
-  //   favorites: React.PropTypes.array.isRequired,
-  // };
-  //
+  static propTypes = {
+    dispatch: React.PropTypes.func.isRequired,
+    query: React.PropTypes.object.isRequired,
+    cards: React.PropTypes.array.isRequired,
+    login: React.PropTypes.object.isRequired,
+    signup: React.PropTypes.object.isRequired,
+    favorites: React.PropTypes.array.isRequired,
+  };
+
   constructor(props) {
     super(props);
   }
@@ -83,10 +81,7 @@ export default class Results extends Component{
       },
       body: JSON.stringify(newFavorite)
     }).then(res => {
-      console.log("response from SF: ", res);
-      console.log("email", this.props.login.email || this.props.signup.email || this.props.login.facebookId);
       var userEmail = this.props.login.email || this.props.signup.email || this.props.login.facebookId;
-      console.log("global email", userEmail);
       return fetch('http://localhost:3000/api/carly/favorites/'+userEmail, {
         method: 'GET',
         headers: {
@@ -99,6 +94,7 @@ export default class Results extends Component{
         dispatch(favoritesActions({favoritesList: data.favorites}));
       })
     })
+
   }
   handleNope (card) {
     console.log("nope")
@@ -106,40 +102,8 @@ export default class Results extends Component{
   cardRemoved (index) {
     console.log(`The index is ${index}`);
 
-    // let CARD_REFRESH_LIMIT = 3
-
-    // if (this.props.cards.length - index <= CARD_REFRESH_LIMIT + 1) {
-    //   console.log(`There are only ${this.props.cards.length - index - 1} cards left.`);
-
-    //   if (!this.props.outOfCards) {
-    //     console.log(`Adding ${Cards2.length} more cards`)
-
-    //     this.setState({
-    //       cards: this.props.cards.concat(Cards2),
-    //       outOfCards: true
-    //     })
-    //   }
-
-    // }
-
   }
-  renderCards() {
 
-    return (
-      <SwipeCards
-      cards={fakeData}
-      loop={false}
-      style={styles.container}
-
-      renderCard={(cardData) => <Card {...cardData} />}
-      renderNoMoreCards={() => <NoMoreCards />}
-      showYup={true}
-      showNope={true}
-      handleYup={this.handleYup.bind(this)}
-      handleNope={this.handleNope}
-      cardRemoved={this.cardRemoved}/>
-    )
-  }
   render() {
     const rightItem = {
       title: 'ios-heart',
@@ -155,7 +119,7 @@ export default class Results extends Component{
       <View >
       <Image
       style={styles.header}
-      source={require('../assets/images/parallaxtest1.jpg')}
+      source={require('../assets/images/opl-parallax-universe.jpg')}
       >
       <Header
         title={'Results'}
@@ -164,7 +128,7 @@ export default class Results extends Component{
       >
       </Header>
       </Image>
-      <Text>'TEST'</Text>
+      <Text></Text>
       <SwipeCards
       cards={this.props.cards}
       loop={false}
@@ -178,9 +142,7 @@ export default class Results extends Component{
       handleYup={this.handleYup.bind(this)}
       handleNope={this.handleNope}
       cardRemoved={this.cardRemoved}/>
-
       </View>
-
     )
   }
 }
@@ -188,9 +150,11 @@ export default class Results extends Component{
 
 const styles = StyleSheet.create({
   actionButtonIcon: {
+    flex:1,
     fontSize: 20,
     height: 22,
     color: 'white',
+    marginTop: 200
   },
   thumbnail: {
     flex: 1,

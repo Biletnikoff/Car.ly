@@ -157,14 +157,7 @@ export default class FavoritesList extends Component {
       _.map(favorites, (item, index) => {
         return (
           <Swipeout autoClose={true} right={[
-            {
-            component:(  <View style={styles.text}>
-                <Text style={styles.text}>{item.year}</Text>
-                <Text style={styles.text}>{item.make}</Text>
-                <Text style={styles.text}>{item.model}</Text>
-                <Text style={styles.text}>{item.price}</Text>
-              </View>)
-            },
+
             {
               text: 'Dealer Site',
               backgroundColor: '#f1c40f',
@@ -180,8 +173,17 @@ export default class FavoritesList extends Component {
           <Image
          key={`PhotoItem_${item.id}`}
          style={styles.image}
-         source={{uri: s(item.image)}}
-         />
+         source={{uri: s(item.image)}}>
+         <View>
+          <Text style={styles.imageText}>
+              <Text style={styles.text}>{item.year+''} </Text>
+              <Text style={styles.text}>{item.make+''} </Text>
+              <Text style={styles.text}>{item.model+''} </Text>
+              <Text style={styles.text}>{item.price+''} </Text>
+          </Text>
+         </View>
+         </Image>
+
 
           </View>
           </Swipeout>
@@ -226,7 +228,8 @@ const styles = StyleSheet.create({
   image: {
     width:100,
     height:130,
-    flex: 1
+    flex: 1,
+
   },
   button: {
     height: 50,
@@ -242,12 +245,21 @@ const styles = StyleSheet.create({
     alignSelf: 'center'
   },
   text: {
-     backgroundColor: '#7f8c8d',
+    paddingRight:5,
      width:100,
      height: 35,
      fontSize: 15,
      fontWeight: 'bold',
      color: 'white',
-     textAlign: 'left'
+     textShadowColor: 'black',
+     textShadowRadius: 500,
+     flex: 1
+  },
+  imageText: {
+    flex:1,
+    flexDirection:'column',
+    height:50,
+    width:400,
+    backgroundColor: 'rgba(0,0,0,0)'
   }
 });

@@ -18,7 +18,7 @@ import { connect } from 'react-redux';
 import sendtoDB from '../actions/resultsActions';
 import resultsListActions from '../actions/resultsListActions';
 import favoritesActions from '../actions/favoritesActions';
-import globalVariables from '../styles/globalVariables.js'
+import globalVariables from '../styles/globalVariables.js';
 import ActionButton from 'react-native-action-button';
 import Icon from 'react-native-vector-icons/Ionicons';
 
@@ -48,8 +48,8 @@ const SpecIconBox = React.createClass({
 const Card = React.createClass({
 
   convertScale(url) {
-    if(url.includes('autotrader')) {
-      url = 'http://images.autotrader.com/scaler/500/500/'+url.slice(42);
+    if (url.includes('autotrader')) {
+      url = 'http://images.autotrader.com/scaler/500/500/' + url.slice(42);
     }
     // else if (url.includes('ebay')){
     //   url = ''
@@ -57,31 +57,35 @@ const Card = React.createClass({
     return url;
   },
   render() {
-    if ( this.props.miles ) {
+    if (this.props.miles) {
       return (
         <View style={styles.card}>
-          <Image style={styles.thumbnail} source={{uri: this.convertScale(this.props.image[0].src)}} />
+          <Image style={styles.thumbnail} source={{ uri: this.convertScale(this.props.image[0].src) }} />
               <View>
                  <View style={styles.iconContainer}>
-                   <SpecIconBox value={this.props.vehicleTitle[0].text.slice(0,4) } label={'Year'} icon={require('../assets/images/year-large.png')} />
+                   <SpecIconBox value={this.props.vehicleTitle[0].text.slice(0, 4) } label={'Year'} icon={require('../assets/images/year-large.png')} />
                    <SpecIconBox value={this.props.miles[0].text} label={'Miles'} icon={require('../assets/images/sqft-large.png')} />
-                   <SpecIconBox value={this.props.price[0].text} label={'Price'} icon={require('../assets/images/tax-large.png')}/>
+                   <SpecIconBox value={this.props.price[0].text} label={'Price'} icon={require('../assets/images/tax-large.png')} />
                  </View>
               </View>
         </View>
-      )
+      );
     } else if (this.props.miles === undefined) {
       return (
         <View style={styles.card}>
-          <Image style={styles.thumbnail} source={{uri: this.convertScale(this.props.image[0].src)}} />
-          <Text style={styles.text}>{this.props.vehicleTitle[0].text}</Text>
-          <Text style={styles.text}>This is more information {this.props.price[0].text}</Text>
-          <Text style={styles.text}>This is even more information {'N/A'}</Text>
+          <Image style={styles.thumbnail} source={{ uri: this.convertScale(this.props.image[0].src) }} />
+              <View>
+                 <View style={styles.iconContainer}>
+                   <SpecIconBox value={this.props.vehicleTitle[0].text.slice(0, 4) } label={'Year'} icon={require('../assets/images/year-large.png')} />
+                   <SpecIconBox value={"N/A"} label={'Miles'} icon={require('../assets/images/sqft-large.png')} />
+                   <SpecIconBox value={this.props.price[0].text} label={'Price'} icon={require('../assets/images/tax-large.png')} />
+                 </View>
+              </View>
         </View>
-      )
+      );
     }
-  }
-})
+  },
+});
 
 const styles = StyleSheet.create({
   actionButtonIcon: {
@@ -90,8 +94,7 @@ const styles = StyleSheet.create({
     color: 'white',
   },
   card: {
-    height:400,
-    marginTop:100,
+    height:undefined,
     alignItems: 'center',
     backgroundColor: globalVariables.background,
     elevation: 1,
@@ -100,19 +103,19 @@ const styles = StyleSheet.create({
     shadowRadius: 2,
     shadowOffset: {
       height: 10,
-      width: 10
+      width: 10,
     },
   },
   thumbnail: {
     flex: 1,
     width: 355,
-    height: 500,
-    resizeMode: 'contain',
+    height: 450,
+    resizeMode: 'cover',
   },
   text: {
     fontSize: 20,
     paddingTop: 10,
-    paddingBottom: 10
+    paddingBottom: 10,
   },
   noMoreCards: {
     flex: 1,
@@ -121,13 +124,13 @@ const styles = StyleSheet.create({
   },
   boxContainer: {
     justifyContent: 'center',
-    padding: 20
+    padding: 20,
   },
   iconContainer: {
-  flex: 1,
-  flexDirection: 'row',
-  justifyContent: 'space-around',
-},
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+  },
   boxIcon: {
     flex: 1,
     alignSelf: 'center',
@@ -140,15 +143,15 @@ const styles = StyleSheet.create({
     fontSize: 19,
     fontWeight: '200',
     color: globalVariables.textColor,
-    textAlign: 'center'
+    textAlign: 'center',
   },
 
   boxLabel: {
     flex: 1,
     fontSize: 12,
     color: globalVariables.textColor,
-    textAlign: 'center'
+    textAlign: 'center',
   },
-})
+});
 
 export default Card;

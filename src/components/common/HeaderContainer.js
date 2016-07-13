@@ -7,15 +7,14 @@ const {
   View,
 } = React;
 import StyleSheet from '../../styles/CarlyStyleSheet.js'
-var Animated = require('Animated');
-var NativeModules = require('NativeModules');
-var Dimensions = require('Dimensions');
-var Header = require('./Header');
-var ParallaxBackground = require('./ParallaxBackground');
-var { Text } = require('../../styles/text.js');
-var Platform = require('Platform');
-var NativeModules = require('NativeModules');
-var PageView = require('./PageView.js')
+import Animated from 'Animated';
+import NativeModules from 'NativeModules';
+import Dimensions from 'Dimensions';
+import Header from './Header';
+import ParallaxBackground from './ParallaxBackground';
+import { Text } from '../../styles/text.js';
+import Platform from 'Platform';
+import PageView from './PageView.js';
 
 import type {Item as HeaderItem} from 'Header';
 

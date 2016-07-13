@@ -60,9 +60,10 @@ export default class Search extends Component {
   }
 
   navigateToResults() {
+
     setTimeout(function() {
       Actions.Results();
-    }, 4900);
+    }, 12000);
   }
 
   turnOffActivity() {
@@ -71,7 +72,7 @@ export default class Search extends Component {
       setTimeout(function() {
         that.props.dispatch(requestedData({requestedCarData: false}))
       },
-    4000);
+    10000);
     }
   }
 
@@ -104,12 +105,9 @@ export default class Search extends Component {
         rightItem={rightItem}>
         <ListViewer
         renderEmptyList={this.renderScrollView.bind(this)}
-
         >
         </ListViewer>
-
       </HeaderContainer>
-
   )
   }
   renderScrollView(){

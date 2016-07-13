@@ -36,9 +36,9 @@ let NoMoreCards = React.createClass({
       <View style={styles.noMoreCards}>
         <Text>No more cards</Text>
       </View>
-    )
-  }
-})
+    );
+  },
+});
 
 
 
@@ -60,13 +60,14 @@ const styles = StyleSheet.create({
   text: {
     fontSize: 20,
     paddingTop: 10,
-    paddingBottom: 10
+    paddingBottom: 10,
   },
   noMoreCards: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-  }
-})
+    height: 500,
+  },
+});
 
 export default NoMoreCards;
