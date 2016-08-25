@@ -1,7 +1,7 @@
 import { createAction } from 'redux-actions';
 import backend from '../service/backend.js';
 
-
+// Creates a query to our Webscraper and then sends the results to the reducer
 export default createAction(
   'GET_CARDATA',
   async (searchQuery) => {
