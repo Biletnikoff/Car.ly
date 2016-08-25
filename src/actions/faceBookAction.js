@@ -26,6 +26,7 @@ export function setFacebookToken(token) {
   }
 }
 
+//should always validate on login or app open
 export function validateFBLogin(userInfo) {
   return dispatch => {
     dispatch(facebookSignIn(userInfo))
