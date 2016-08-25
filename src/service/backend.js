@@ -12,7 +12,7 @@ const trueCarExtractor = 'https://extraction.import.io/query/extractor/61a0b22e-
 const autoTempestExtractor = 'https://extraction.import.io/query/extractor/7a187e3b-9866-4a06-9bc9-69aeaef41f6e?_apikey=1a5572df59da4a00b33882c4ddd3fea53d9fb3033ae4ef5acd816c003c4988faa31e4f8d8359fdf2fc90fa779e8dbe76adc576eefcabfa2f66d52df4fe1f0a6cd610915ef3b0f81f1772133575adbbcc';
 
 module.exports = {
-
+  // aggregates data from our RESTful webapi scraper (1/4)
   getCarData(searchQuery) {
     return fetch(autotraderExtractor +
       '&url=http%3A%2F%2Fwww.autotrader.com%2Fcars-for-sale%2FUsed%2BCars%2F' +
@@ -23,7 +23,8 @@ module.exports = {
         method:'GET',
       }).then(util.getResponseJSON);
   },
-
+  
+  //(2/4)
   getAutoTempestData(searchQuery) {
     return fetch(autoTempestExtractor +
       '&url=http%3A%2F%2Fwww.autotempest.com%2Fresults%2F%3Fmake%3D' +
@@ -37,7 +38,8 @@ module.exports = {
         method:'GET',
       }).then(util.getResponseJSON);
   },
-
+  
+  //(3/4)
   getTrueCarData(searchQuery) {
     console.log('in truecar');
     // searchQuery.zipcode = 30022;
@@ -51,7 +53,8 @@ module.exports = {
          method:'GET',
        }).then(util.getResponseJSON);
   },
-
+ 
+ //(4/4)
   getEbayData(searchQuery) {
     var year = '';
     for (var i = searchQuery.startYear; i < searchQuery.endYear; i += 1000) {
@@ -71,6 +74,8 @@ module.exports = {
        method:'GET',
      }).then(util.getResponseJSON);
   },
+  
+  // Login/Signup
   submitUserData(emailAndPassword) {
     return fetch('http://localhost:3000/api/carly/users', {
       method: 'POST',
@@ -84,6 +89,8 @@ module.exports = {
       }),
     }).then(util.getResponse);
   },
+  
+  //Login
   login(emailAndPassword) {
     return fetch('http://localhost:3000/api/carly/users/login', {
       method: 'POST',
@@ -97,22 +104,4 @@ module.exports = {
       }),
     }).then(util.getResponse);
   },
-
-  // obtainUserData(email) {
-  //   return fetch('carlyapp.herokuapp.com/api/carly/users/getID', {
-  //     method: 'POST',
-  //     headers: {
-  //       'Accept': 'application/json',
-  //       'Content-Type': 'application/json'
-  //     },
-  //     body: JSON.stringify({
-  //       email: email
-  //     })
-  //   }).then ((response) => {
-  //     console.log('THE FUCKING RESPONSE', response.json());
-  //     return response.json();
-  //   }).catch((err) => {
-  //     console.log('Error', err);
-  //   })
-  // }
 };
