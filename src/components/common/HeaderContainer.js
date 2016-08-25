@@ -46,6 +46,7 @@ var ActivityIndicatorIOS = require('ActivityIndicatorIOS');
 var ProgressBarAndroid = require('ProgressBarAndroid');
 const ActivityIndicator =  ActivityIndicatorIOS;
 
+ //Renders scrolling list
 class RelayLoading extends React.Component {
   render() {
     const child = React.Children.only(this.props.children);
@@ -79,11 +80,9 @@ class ListContainer extends React.Component {
     var leftItem = this.props.leftItem;
     const segments = [];
     const content = React.Children.map(this.props.children, (child, idx) => {
-      console.log(this.props.children + ' all chilren');
-      console.log(child + ' one child');
-      console.log(segments.length)
       segments.push(child.props.title);
 
+      // determines animation properties within the view
       return <RelayLoading>{React.cloneElement(child, {
         ref: (ref) => this._refs[idx] = ref,
         onScroll: (e) => this.handleScroll(idx, e),
